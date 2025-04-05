@@ -51,7 +51,7 @@ Our Solution: A user-friendly website that helps first-time growers learn the co
 ## Tech Stack ## 
 
 # Backend: 
-Part 1. Model 
+Part 1. Models 
     - Part A: Prediction of similar plants 
 
         what: Prediction of what plants would be good to plant, based on user preferences, and the conditions (temperature and humidity) of the user's home
@@ -62,8 +62,7 @@ Part 1. Model
         Possible datasets: 
             - https://www.kaggle.com/datasets/shankarpriya2913/crop-and-soil-dataset/data
 
-
-    - Part B: Forecasting future problems 
+      Part B: Forecasting future problems 
         what: Making predictions of plant health based on temeprature, humidity, amount of watering, amount of sunlight the plant is getting based on geographical location/ weather reports of geographical location. 
 
         Model inputs: weather conditions for the week, # of times watering, type of soil 
@@ -75,7 +74,7 @@ Part 1. Model
             - https://www.kaggle.com/datasets/ziya07/plant-health-data
             - https://www.kaggle.com/datasets/gorororororo23/plant-growth-data-classification
 
-    - Part C: Gemeni prompt generation (stretch goal (?)) 
+      Part C: Gemeni prompt generation (stretch goal (?)) 
         Input: Given the context of a plant (and image of plant), what tools the user has 
         Output: Generate reccomendations for the plant. 
         
@@ -88,7 +87,7 @@ Part 2. Cloud Architecture
     - User's opt in or out 
     - which plants the user selects 
 
-AWS SQS 
+Part 3. AWS SQS 
 - User will be sent an email every week on instructions on how to take care of plants 
     - They will be notified on 
         - when they need to repot 
@@ -97,16 +96,22 @@ AWS SQS
         - how much more artificial light in this upcoming week 
         - any changes to temperature? 
 
-- Router/ web hosting where the server will return the website pages when called 
-- Pages we will have: 
-    - username/pass
-    - questionare page 
-    - opt in/out 
-    - recc plants 
-    - home page  
+Part 4. AWS EC2 
+    - Router/ web hosting where the server will return the website pages when called 
+    - Pages we will have: 
+        - username/pass
+        - questionare page 
+        - opt in/out 
+        - recc plants 
+        - home page  
 
+Part 5. SQL/ RDS
 - Connecting to the database using MySQLWorkbench
 ![ERD Diagram](./ERD_DB_diagram.png)
+
+Part 6. API gateway 
+Self explanatory 
+
 
 
 ### SPRINTS ### 
