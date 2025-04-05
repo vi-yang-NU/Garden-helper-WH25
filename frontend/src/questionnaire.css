@@ -1,0 +1,115 @@
+/* questionnaire.css */
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #f0fdf4;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Container for each question page */
+  .questionnaire-page {
+    min-height: 100vh;
+    background-color: #f0fdf4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  /* Question text */
+  .questionnaire-heading {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 1.25rem;
+  }
+  
+  /* Text input field */
+  .questionnaire-input {
+    width: 100%;
+    max-width: 300px;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+  }
+  
+  /* Group of options (Yes/No, Herbs/Vegetables/etc.) */
+  .questionnaire-option-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Each option button */
+  .questionnaire-option-btn {
+    padding: 0.75rem 1.5rem;
+    background-color: white;
+    border: 2px solid #ccc;
+    border-radius: 9999px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  
+  .questionnaire-option-btn:hover {
+    background-color: #dcfce7;
+    border-color: #4ade80;
+  }
+  
+  /* Next/Finish button */
+  .questionnaire-next-btn {
+    background-color: #22c55e;
+    color: white;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-bottom: 2rem;
+  }
+  
+  .questionnaire-next-btn:hover {
+    background-color: #16a34a;
+  }
+  
+  /* Progress bar wrapper */
+  .questionnaire-progress-container {
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 500px;
+  }
+  
+  /* Background bar */
+  .questionnaire-progress-bar-bg {
+    background-color: #e5e7eb;
+    height: 0.5rem;
+    border-radius: 9999px;
+    overflow: hidden;
+  }
+  
+  /* Progress fill */
+  .questionnaire-progress-bar-fill {
+    background-color: #22c55e;
+    height: 100%;
+    border-radius: 9999px;
+    transition: width 0.3s ease-in-out;
+  }
+  
+  /* Text under progress bar */
+  .questionnaire-progress-label {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+  
