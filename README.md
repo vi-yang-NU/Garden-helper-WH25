@@ -44,6 +44,8 @@ User "set up"
 "Home page" 
 - Home page has the different cards that the user can check what progress they are on with different plants. They can click each one to expand and finish set up for the plant (if they have not)
 
+- User will be sent an email that tells them what to do that week. 
+
 # Backend: 
 - We save user's email and pass and once verified we can pass token for each call (stretch goal)
 - User's questionare gets sent to S3 bucket 
