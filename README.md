@@ -11,20 +11,20 @@
 - Leo 
 
 
-## Project Background ## 
-# Target audience: 
+# Project Background # 
+## Target audience: ## 
 Target Audience: home growers in urban areas
 
-# Problem Statement: 
+## Problem Statement: ##
 Problem: New home growers seeking to start indoor horticulture in small or limited spaces
 
-# JTBD: 
+# JTBD: #
 When I’m starting to grow food at home for the first time, I want a simple way to learn which crops are right for my indoor space and how to care for them, so I can grow healthy plants successfully and feel confident in my gardening journey.
 
-# Solution: 
+## Solution: ##
 Our Solution: A user-friendly website that helps first-time growers learn the conditions needed to successfully grow their favorite crops indoors — and track their garden’s progress over time.
 
-# User Journey: 
+# User Journey: #
 
 ** User "set up" **  
 1. Create Username/Password 
@@ -43,14 +43,13 @@ Our Solution: A user-friendly website that helps first-time growers learn the co
         - Ask for if they want to be emailed or texted 
 4. User sees a dashboard with the reccomended plants for them (categorized), they will be shown plants that they want to grow be categorized into easy medium and hard. User clicks on cards, they will then exit set up 
 
-"Home page" 
 5. Home page has the different cards that the user can check what progress they are on with different plants. They can click each one to expand and finish set up for the plant (if they have not)
 
 6. User will be sent an email that tells them what to do that week. 
 
-## Tech Stack ## 
+# Tech Stack # 
 
-# Backend: 
+## Backend: ##
 Part 1. Models 
     - Part A: Prediction of similar plants 
 
@@ -114,16 +113,16 @@ Self explanatory
 
 
 
-### SPRINTS ### 
+# SPRINTS # 
 
-# Sprint #1  1:00 PM - 6:00 PM 
+## Sprint 1  1:00 PM - 6:00 PM ##
 
 - Art and design wise: have all assets and designs ready by 6 PM Betty 
 
 - by 6 PM finish parsing through the dataset, and setting up a basic model (does not need good prediction yet) - Leo 
 
 
-# Sprint #2 6:00PM - 11:00 PM 
+## Sprint 2 6:00PM - 11:00 PM ##
 
 - Come up with ML model using the data from Kaggle to predict which plants would grow better. (i.e. the user is going to buy 1 soil, or they can make their own soil combination, but which plants can they have given a nitrogen, phosphorus, potassium). 
 So for a given combination of the three minerals, which plants would work the best, and what is the range of possible plant values we can get from decreasing one/ increasing another. 
@@ -131,5 +130,5 @@ So for a given combination of the three minerals, which plants would work the be
 
 
 
-# Logistics and notes: 
+## #Logistics and notes: ##
 guide.wildhacks.net 
