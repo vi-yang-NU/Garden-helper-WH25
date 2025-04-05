@@ -25,7 +25,8 @@ When I’m starting to grow food at home for the first time, I want a simple way
 Our Solution: A user-friendly website that helps first-time growers learn the conditions needed to successfully grow their favorite crops indoors — and track their garden’s progress over time.
 
 # User Journey: 
-User "set up" 
+
+** User "set up" **  
 1. Create Username/Password 
 2. Users fills out questionare  
     - Which city do you live in 
@@ -34,6 +35,8 @@ User "set up"
         (find it with compass)
     - Have you grown plants before? 
     - What type of plant do you want to grow 
+    - What temperature is your home right now? 
+    - What is the humidity of your home?  
 3. Have a seperate page that shows we will help you track your progress
     - they can opt in or out
     - We will let you know if your plant needs "supplements" i.e. x hours of artificial sunlight, x more or less watering times, by sending it to your email or text
@@ -50,6 +53,9 @@ Part 1. Model
     - Part A. 
         what: Prediction of what plants would be good to plant 
         how: ML training on Jypter Notebook 
+        Model input: Plant name, temperature, humidity 
+        Model output: range of plants user can plant for different soil combinations 
+
     - Part B. Forecasting 
 
 Part 2. Architecture 
