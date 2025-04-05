@@ -1,4 +1,4 @@
-CREATE TABLE user_profiles (
+CREATE TABLE IF NOT EXISTS user_profiles (
     profile_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT,
     city VARCHAR(100),
@@ -8,6 +8,7 @@ CREATE TABLE user_profiles (
     desired_plant_type VARCHAR(100),
     home_temperature FLOAT,
     home_humidity FLOAT,
+    watering_preference ENUM('daily', 'every few days', 'weekly', 'rarely'),
     track_opt_in BOOLEAN DEFAULT TRUE,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );

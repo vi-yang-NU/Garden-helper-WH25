@@ -37,6 +37,7 @@ Our Solution: A user-friendly website that helps first-time growers learn the co
     - What type of plant would you like to grow 
     - What temperature is your home right now? 
     - What is the humidity of your home?  
+    - How much they want to water the plant 
 3. Have a seperate page that shows we will help you track your progress
     - they can opt in or out
     - We will let you know if your plant needs "supplements" i.e. x hours of artificial sunlight, x more or less watering times, by sending it to your email or text

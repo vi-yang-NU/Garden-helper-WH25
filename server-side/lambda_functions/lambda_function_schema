@@ -1,0 +1,23 @@
+[React Frontend (EC2)]
+         |
+         V
++----------------------+
+|   API Gateway        |
++----------------------+
+        |
+        V
+    Lambda Functions
+        |
+        V
++----------------------+
+|     MySQL (RDS)      |
+|    garden_app DB     |
++----------------------+
+
+Lambda Functions:
+  ├── create_user         → POST /users
+  ├── login_user          → POST /login
+  ├── save_profile        → POST /profiles
+  ├── get_recommendations → GET  /recommendations
+  ├── add_user_plant      → POST /user_plants
+  ├── get_user_plants     → GET  /user_plants

@@ -1,0 +1,61 @@
+"""
+Lambda Function: save_profile
+Saves or updates a user's profile data (questionnaire answers) in the `user_profiles` table.
+Assumes user_id already exists and is valid.
+"""
+import json
+import pymysql
+import configparser
+import os
+
+def lambda_handler(event, context):
+    try:
+        body = json.loads(event['body'])
+        user_id = body['user_id']
+        city = body['city']
+        has_window = body['has_window']
+        window_orientation = body['window_orientation']
+        experience_level = body['experience_level']
+        desired_plant_type = body['desired_plant_type']
+        home_temperature = body['home_temperature']
+        home_humidity = body['home_humidity']
+        watering_preference = body['watering_preference']
+        track_opt_in = body.get('track_opt_in', True)
+
+        config = configparser.ConfigParser()
+        config.read(os.path.join(os.path.dirname(__file__), 'hacks-config.ini'))
+
+        db_host = config['rds']['endpoint']
+        db_user = config['rds']['user_name']
+        db_pass = config['rds']['user_pwd']
+        db_name = config['rds']['db_name']
+        db_port = int(config['rds']['port_number'])
+
+        connection = pymysql.connect(
+            host=db_host,
+            user=db_user,
+            password=db_pass,
+            database=db_name,
+            port=db_port,
+            cursorclass=pymysql.cursors.DictCursor
+        )
+
+        with connection.cursor() as cursor:
+            sql = """
+                INSERT INTO user_profiles (
+                    user_id, city, has_window, window_orientation, experience_level,
+                    desired_plant_type, home_temperature, home_humidity,
+                    watering_preference, track_opt_in
+                ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            """
+            cursor.execute(sql, (
+                user_id, city, has_window, window_orientation, experience_level,
+                desired_plant_type, home_temperature, home_humidity,
+                watering_preference, track_opt_in
+            ))
+            connection.commit()
+
+        return {"statusCode": 200, "body": json.dumps({"message": "Profile saved successfully"})}
+
+    except Exception as e:
+        return {"statusCode": 500, "body": json.dumps({"error": str(e)})}
