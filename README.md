@@ -1,5 +1,8 @@
 # wildhacks-2025
 
+# Tracks: 
+- Agriculture, productivity/wellness and Finance 
+
 
 # Authors: 
 
@@ -9,19 +12,17 @@
 # Leo 
 
 
+## Project Background ## 
 # Target audience: 
 Target Audience: home growers in urban areas
 
 # Problem Statement: 
-
 Problem: New home growers seeking to start indoor horticulture in small or limited spaces
 
 # JTBD: 
-
 When I’m starting to grow food at home for the first time, I want a simple way to learn which crops are right for my indoor space and how to care for them, so I can grow healthy plants successfully and feel confident in my gardening journey.
 
 # Solution: 
-
 Our Solution: A user-friendly website that helps first-time growers learn the conditions needed to successfully grow their favorite crops indoors — and track their garden’s progress over time.
 
 # User Journey: 
@@ -48,6 +49,8 @@ Our Solution: A user-friendly website that helps first-time growers learn the co
 
 7. User will be sent an email that tells them what to do that week. 
 
+## Tech Stack ## 
+
 # Backend: 
 Part 1. Model 
     - Part A: Prediction of similar plants 
@@ -73,18 +76,28 @@ Part 1. Model
             - https://www.kaggle.com/datasets/ziya07/plant-health-data
             - https://www.kaggle.com/datasets/gorororororo23/plant-growth-data-classification
 
-    - Part C: Gemeni prompt generation 
-        Input: Given the context of a plant, what tools the user has 
+    - Part C: Gemeni prompt generation (stretch goal (?)) 
+        Input: Given the context of a plant (and image of plant), what tools the user has 
         Output: Generate reccomendations for the plant. 
+        
+        User can upload picture of plant to diagnose the problem. 
 
-Part 2. Architecture 
+Part 2. Cloud Architecture 
 - We save user's email and pass and once verified we can pass token for each call (stretch goal)
 - User's questionare gets sent to S3 bucket 
+- User's opt in or out 
+- which plants the user selects 
+
+- User will be sent an email every week on instructions on how to take care of plants 
+    - They will be notified on 
+        - when they need to repot 
+        - when they need to change the soil 
+        - how often to irrigate it 
+        - how much more artificial light in this upcoming week 
+        - any changes to temperature? 
 
 
-# User Journey: 
-
-
+### SPRINTS ### 
 
 # Sprint #1  1:00 PM - 6:00 PM 
 
@@ -103,15 +116,3 @@ So for a given combination of the three minerals, which plants would work the be
 
 # Logistics and notes: 
 guide.wildhacks.net 
-
-
-# Project overview: 
-
-
-# Project Architecture: 
-- Cloud Infrastructure to create accounts 
-- AI/ ML training, datasets from HuggingFace (?), fine-tuning TensorFlow or PyTorch models
-- Using Google Gemeni 
-
-Tracks: 
-- Agriculture, productivity/wellness and Finance 
