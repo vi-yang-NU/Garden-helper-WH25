@@ -43,18 +43,31 @@ User "set up"
 "Home page" 
 6. Home page has the different cards that the user can check what progress they are on with different plants. They can click each one to expand and finish set up for the plant (if they have not)
 
-- User will be sent an email that tells them what to do that week. 
+7. User will be sent an email that tells them what to do that week. 
 
 # Backend: 
+Part 1. Model 
+    - Part A. 
+        what: Prediction of what plants would be good to plant 
+        how: ML training on Jypter Notebook 
+    - Part B. Forecasting 
+
+Part 2. Architecture 
 - We save user's email and pass and once verified we can pass token for each call (stretch goal)
 - User's questionare gets sent to S3 bucket 
-- 
+
+
+# User Journey: 
 
 
 
 # Sprint #1  1:00 PM - 6:00 PM 
 
-- Art and design wise: have all assets and designs ready by 6 PM 
+- Art and design wise: have all assets and designs ready by 6 PM Betty 
+
+- Come up with ML model using the data from Kaggle to predict which plants would grow better. (i.e. the user is going to buy 1 soil, or they can make their own soil combination, but which plants can they have given a nitrogen, phosphorus, potassium). 
+So for a given combination of the three minerals, which plants would work the best, and what is the range of possible plant values we can get from decreasing one/ increasing another. 
+- Additionally do this calcuation on humidity and temperature.  - Leo 
 
 
 # Logistics and notes: 
