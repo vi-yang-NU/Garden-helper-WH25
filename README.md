@@ -26,23 +26,22 @@ Our Solution: A user-friendly website that helps first-time growers learn the co
 
 # User Journey: 
 User "set up" 
-- Create Username/Password 
-- Users fills out questionare  
+1. Create Username/Password 
+2. Users fills out questionare  
     - Which city do you live in 
     - Do you have access to window/ direct sunlight
         - What's the orientation of the windows 
         (find it with compass)
     - Have you grown plants before? 
     - What type of plant do you want to grow 
-- Have a seperate page that shows we will help you track your progress
+3. Have a seperate page that shows we will help you track your progress
     - they can opt in or out
     - We will let you know if your plant needs "supplements" i.e. x hours of artificial sunlight, x more or less watering times, by sending it to your email or text
         - Ask for if they want to be emailed or texted 
-- User sees a dashboard with the reccomended plants for them (categorized), they will be shown plants that they want to grow be categorized into easy medium and hard. 
-- User clicks on cards, they will then exit set up 
+4. User sees a dashboard with the reccomended plants for them (categorized), they will be shown plants that they want to grow be categorized into easy medium and hard. User clicks on cards, they will then exit set up 
 
 "Home page" 
-- Home page has the different cards that the user can check what progress they are on with different plants. They can click each one to expand and finish set up for the plant (if they have not)
+6. Home page has the different cards that the user can check what progress they are on with different plants. They can click each one to expand and finish set up for the plant (if they have not)
 
 - User will be sent an email that tells them what to do that week. 
 
