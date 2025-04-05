@@ -1,0 +1,11 @@
+CREATE TABLE plants (
+    plant_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    difficulty ENUM('easy', 'medium', 'hard'),
+    sun_requirements ENUM('full', 'partial', 'shade'),
+    ideal_temp_min FLOAT,
+    ideal_temp_max FLOAT,
+    ideal_humidity_min FLOAT,
+    ideal_humidity_max FLOAT,
+    indoor_friendly BOOLEAN DEFAULT TRUE
+);

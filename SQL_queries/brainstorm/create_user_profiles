@@ -1,0 +1,13 @@
+CREATE TABLE user_profiles (
+    profile_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    city VARCHAR(100),
+    has_window BOOLEAN,
+    window_orientation ENUM('north', 'south', 'east', 'west', 'unknown'),
+    experience_level ENUM('none', 'some', 'advanced'),
+    desired_plant_type VARCHAR(100),
+    home_temperature FLOAT,
+    home_humidity FLOAT,
+    track_opt_in BOOLEAN DEFAULT TRUE,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);

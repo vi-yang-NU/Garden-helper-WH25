@@ -5,11 +5,10 @@
 
 
 # Authors: 
-
-# Vincent Yang 
-# Lizbeth Yumbia
-# Betty 
-# Leo 
+- Vincent Yang 
+- Lizbeth Yumbia
+- Betty 
+- Leo 
 
 
 ## Project Background ## 
@@ -45,9 +44,9 @@ Our Solution: A user-friendly website that helps first-time growers learn the co
 4. User sees a dashboard with the reccomended plants for them (categorized), they will be shown plants that they want to grow be categorized into easy medium and hard. User clicks on cards, they will then exit set up 
 
 "Home page" 
-6. Home page has the different cards that the user can check what progress they are on with different plants. They can click each one to expand and finish set up for the plant (if they have not)
+5. Home page has the different cards that the user can check what progress they are on with different plants. They can click each one to expand and finish set up for the plant (if they have not)
 
-7. User will be sent an email that tells them what to do that week. 
+6. User will be sent an email that tells them what to do that week. 
 
 ## Tech Stack ## 
 
@@ -83,11 +82,13 @@ Part 1. Model
         User can upload picture of plant to diagnose the problem. 
 
 Part 2. Cloud Architecture 
-- We save user's email and pass and once verified we can pass token for each call (stretch goal)
-- User's questionare gets sent to S3 bucket 
-- User's opt in or out 
-- which plants the user selects 
+- API gateway/ lambdas + RDS and S3 
+    - We save user's email and pass and once verified we can pass token for each call (stretch goal)
+    - User's questionare gets sent to S3 bucket 
+    - User's opt in or out 
+    - which plants the user selects 
 
+AWS SQS 
 - User will be sent an email every week on instructions on how to take care of plants 
     - They will be notified on 
         - when they need to repot 
@@ -95,6 +96,17 @@ Part 2. Cloud Architecture
         - how often to irrigate it 
         - how much more artificial light in this upcoming week 
         - any changes to temperature? 
+
+- Router/ web hosting where the server will return the website pages when called 
+- Pages we will have: 
+    - username/pass
+    - questionare page 
+    - opt in/out 
+    - recc plants 
+    - home page  
+
+- Connecting to the database using MySQLWorkbench
+![ERD Diagram](./ERD_DB_diagram.png)
 
 
 ### SPRINTS ### 

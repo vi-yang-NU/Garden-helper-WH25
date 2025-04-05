@@ -1,0 +1,49 @@
+CREATE DATABASE IF NOT EXISTS garden_app;
+
+USE garden_app;
+
+CREATE TABLE plants (
+    plant_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    difficulty ENUM('easy', 'medium', 'hard'),
+    sun_requirements ENUM('full', 'partial', 'shade'),
+    ideal_temp_min FLOAT,
+    ideal_temp_max FLOAT,
+    ideal_humidity_min FLOAT,
+    ideal_humidity_max FLOAT,
+    indoor_friendly BOOLEAN DEFAULT TRUE
+);
+
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    email VARCHAR(100),
+    phone VARCHAR(20),
+    contact_pref ENUM('email', 'text', 'none') DEFAULT 'none',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE user_profiles (
+    profile_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    city VARCHAR(100),
+    has_window BOOLEAN,
+    window_orientation ENUM('north', 'south', 'east', 'west', 'unknown'),
+    experience_level ENUM('none', 'some', 'advanced'),
+    desired_plant_type VARCHAR(100),
+    home_temperature FLOAT,
+    home_humidity FLOAT,
+    track_opt_in BOOLEAN DEFAULT TRUE,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+CREATE TABLE user_plants (
+    user_plant_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    plant_id INT,
+    progress_stage VARCHAR(100),
+    setup_complete BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (plant_id) REFERENCES plants(plant_id)
+);
