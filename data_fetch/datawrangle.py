@@ -9,7 +9,7 @@ import numpy as np
 import re
 
 
-# In[2]:
+# In[25]:
 
 
 df = pd.read_excel("data_core.xlsx")
@@ -80,8 +80,6 @@ df = df.applymap(convert_ranges)
 columns_to_convert = df.columns.difference(['commonName'])
 df[columns_to_convert] = df[columns_to_convert].astype(float)
 
-df
-
 
 # In[11]:
 
@@ -94,13 +92,55 @@ user_weights = { # example weights, default is all ones, user slider may change 
 }
 
 
+# In[ ]:
+
+
+def calculate_brightness(desired_directions):
+    if desired_directions = {}:
+        user_input['brightness'] = 3
+    elif "east" in desired_directions:
+        # recommend brightness = 2
+    elif "north" in desired_directions:
+        # recommend brightness = 2.5
+    elif "west" in desired_directions:
+        # recommend brightness = 1.5
+    elif "south" in desired_directions:
+        # recommend brightness = 1
+
+
+# In[ ]:
+
+
+def calculate_temperature(room_temperature):
+    if 60 <= room_temperature <= 80:
+        return 3 - ((room_temperature - 60) / 20) * 2
+    else:
+        raise ValueError("Value must be between 60 and 80")
+
+
+# In[ ]:
+
+
+def calculate_humidity(room_humidity):
+    if 20 <= room_humidity <= 60:
+        return 3 - ((room_humidity - 20) / 40) * 2
+    else:
+        raise ValueError("Value must be between 20 and 60")
+
+
+# In[ ]:
+
+
+# what follows are example cases
+
+
 # In[18]:
 
 
 user_input = {
     'brightness': 3.0, 
     # the higher the number, the less sunlight is needed. 
-    # 3: place plants in a north/south facing room with lots of shade 
+    # 3: place plants in a north facing room with lots of shade 
     # 2: place plants in a bright room with some direct sunlight
     # 1: place plants in a sunroom or directly in sunlight
     'temperature': 3.0,
