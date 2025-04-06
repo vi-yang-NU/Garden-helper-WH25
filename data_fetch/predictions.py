@@ -11,6 +11,42 @@ import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
+import requests
+
+from google.colab import userdata
+userdata.get('weather_api')
+
+location_data = requests.get("https://ipinfo.io").json()
+print(location_data)
+
+city = location_data['city']
+lat, lon = location_data['loc'].split(',')
+
+api_key = userdata.get('weather_api')
+
+url = f"https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude=minutely,hourly,alerts&units=metric&appid={api_key}"
+
+response = requests.get(url)
+weather = response.json()
+
+weather.keys()
+
+if 'daily' not in weather:
+    print("API Error:", weather)
+else:
+    for day in weather['daily']:
+        print(day['temp']['day'])
+
+# get the average of the below from the api, then add in the user inputted data in watering per week and soil type to compute
+
+input_data = {
+    'avg_temp': 26,
+    'humidity': 45,
+    'sunlight_hrs': 9,
+    'watering_per_week': 2,
+}
+
+# example case
 
 data = {
     'avg_temp': [75, 60, 90, 85, 70, 55, 88, 62, 65, 82],
@@ -21,9 +57,6 @@ data = {
 }
 
 df = pd.DataFrame(data)
-
-# Encode soil_type to numeric
-df['soil_type'] = df['soil_type'].astype('category').cat.codes
 
 # Split into features and labels
 X = df.drop('plant_ok', axis=1)
