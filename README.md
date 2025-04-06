@@ -145,5 +145,6 @@ A **user-friendly website** that recommends indoor crops based on environmental 
 
 ---
 
-## 🚀 Submission Deadline
-**⏰ Sunday, 12:30 PM (Final Submission)**
+## 🚀 Submission Timeline
+**⏰ Saturday, 1 PM (Start)**
+**⏰ Sunday, 1 PM (Final Submission)**
