@@ -133,8 +133,8 @@ Self explanatory
 
 ## Sprint 3 Last Sprint! 8:30AM - 12:30 PM ##
 
-- Fix reccomend_plants.py and upload as a lambda function as post reccomended_plants
-- Make get_reccomended_plants 
+- Fix reccomend_plants.py and upload as a lambda function as post reccomended_plants (DONE)
+- Make get_reccomended_plants (DONE) 
 - Fix up the forcasted model and upload forcast_model as a lambda function 
 - Figure out how to invoke lambda function on schedule 
 - (if have time) figure out how to incorporate auth0 

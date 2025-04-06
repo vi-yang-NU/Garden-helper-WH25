@@ -51,3 +51,13 @@ payload = {
 }
 response = requests.post(f"{BASE_URL}/user-profile", json=payload)
 print("Save User Profile:", response.json())
+
+# 6. Give reccomendations 
+payload = {
+  "brightness": 3,
+  "temperature": 2.5,
+  "solHumidity": 2,
+  "watering": 1.5
+}
+response = requests.post(f"{BASE_URL}/recc", json=payload)
+print("Return on payload: ", response.json())
