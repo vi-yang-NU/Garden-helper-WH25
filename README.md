@@ -74,7 +74,7 @@ A **user-friendly website** that recommends indoor crops based on environmental 
   - Output: Binary health prediction (ok or not)
   - Model exported with `joblib` and hosted on Lambda
 
-- **C. Gemini Prompt Gen (stretch)**
+- **C. Gemini Prompt Gen (stretch - did not have time for)**
   - Input: Image + context
   - Output: Plant care advice
 
@@ -116,7 +116,7 @@ A **user-friendly website** that recommends indoor crops based on environmental 
 - ✅ Created `get_recommended_plants` endpoint
 - ✅ Finalized health forecasting model deployment
 - ✅ Hooked up weekly scheduler (via Lambda/SQS)
-- 🔐 Researched Auth0 integration (stretch goal)
+- 🔐 Researched Auth0 integration (stretch goal - did not have time for)
 
 ---
 
