@@ -8,7 +8,8 @@ import QuestionCity from './pages/questionnaire/QuestionCity';
 import QuestionSunlight from './pages/questionnaire/QuestionSunlight';
 import QuestionExperience from './pages/questionnaire/QuestionExperience';
 import QuestionPlantType from './pages/questionnaire/QuestionPlantType';
-import './questionnaire.css';
+import PlantDetailPage from './pages/PlantDetailPage';
+import './styling/questionnaire.css';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
       <Route path="/questionnaire/experience" element={<QuestionExperience />} />
       <Route path="/questionnaire/plant-type" element={<QuestionPlantType />} />
       <Route path="/dashboard" element={<DashboardPage />} />
+      <Route path="/plant/:plantId" element={<PlantDetailPage />} />
     </Routes>
   );
 }

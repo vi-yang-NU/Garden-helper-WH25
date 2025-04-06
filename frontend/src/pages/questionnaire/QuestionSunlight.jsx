@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ProgressBar from '../../components/ProgressBar';
+import { useQuestionnaire } from '../../context/QuestionnaireContext';
+import '../../styling/QuestionPage.css';
 
 const QuestionSunlight = () => {
   const navigate = useNavigate();
+  const { responses, updateResponse } = useQuestionnaire();
+  const [selected, setSelected] = useState(responses.sunlight || '');
+
+  const handleSelect = (value) => {
+    setSelected(value);
+    updateResponse('sunlight', value);
+  };
 
   const handleNext = () => {
-    navigate('/questionnaire/experience');
+    if (selected) navigate('/questionnaire/experience');
   };
 
   return (
@@ -14,10 +23,21 @@ const QuestionSunlight = () => {
       <div className="questionnaire-card">
         <h2 className="questionnaire-heading">Do you have access to direct sunlight?</h2>
         <div className="questionnaire-option-group">
-          <button className="questionnaire-option-btn">Yes</button>
-          <button className="questionnaire-option-btn">No</button>
+          {['Yes', 'No'].map((option) => (
+            <button
+              key={option}
+              onClick={() => handleSelect(option)}
+              className={`questionnaire-option-btn ${selected === option ? 'selected' : ''}`}
+            >
+              {option}
+            </button>
+          ))}
         </div>
-        <button onClick={handleNext} className="questionnaire-next-btn">
+        <button
+          onClick={handleNext}
+          className="questionnaire-next-btn"
+          disabled={!selected}
+        >
           Next
         </button>
       </div>

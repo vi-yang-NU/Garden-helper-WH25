@@ -1,0 +1,68 @@
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f0fdf4;
+  }
+  
+  .dashboard-sidebar {
+    width: 260px;
+    padding: 2rem 1.5rem;
+    background-color: #ffffff;
+    border-right: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .sidebar-logo {
+    width: 120px;
+    margin-bottom: 1rem;
+  }
+  
+  .sidebar-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #14532d;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .task-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+  
+  .task-item {
+    font-size: 0.95rem;
+    color: #374151;
+    margin-bottom: 0.75rem;
+    text-align: left;
+    padding-left: 1rem;
+    position: relative;
+  }
+  
+  .task-item::before {
+    content: '🌱';
+    position: absolute;
+    left: 0;
+  }
+  
+  .dashboard-main {
+    flex: 1;
+    padding: 2rem;
+  }
+  
+  .dashboard-heading {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #14532d;
+    margin-bottom: 1.5rem;
+  }
+  
+  .crop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }

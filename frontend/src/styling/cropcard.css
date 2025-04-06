@@ -1,0 +1,52 @@
+/* CropCard styles */
+
+.crop-card {
+    background-color: #ffffff;
+    border-radius: 1rem;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+    padding: 1rem;
+    width: 100%;
+    max-width: 220px;
+    text-align: center;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+  }
+  
+  .crop-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .crop-image-wrapper {
+    width: 100%;
+    height: 150px;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+    background-color: #f0fdf4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .crop-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  
+  .crop-info {
+    padding: 0.5rem 0;
+  }
+  
+  .crop-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #14532d;
+  }
+  
+  .crop-status {
+    font-size: 0.9rem;
+    color: #4b5563;
+    margin-top: 0.25rem;
+  }
+  
