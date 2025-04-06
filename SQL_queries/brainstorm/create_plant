@@ -1,11 +1,13 @@
+DROP TABLE IF EXISTS plants;
+
 CREATE TABLE plants (
     plant_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100),
+    common_name VARCHAR(100),
     difficulty ENUM('easy', 'medium', 'hard'),
-    sun_requirements ENUM('full', 'partial', 'shade'),
-    ideal_temp_min FLOAT,
-    ideal_temp_max FLOAT,
-    ideal_humidity_min FLOAT,
-    ideal_humidity_max FLOAT,
-    indoor_friendly BOOLEAN DEFAULT TRUE
+    brightness FLOAT,           -- 1 (high sun) to 3 (low sun)
+    temperature FLOAT,          -- 1 (heat-tolerant) to 3 (low temp)
+    sol_humidity FLOAT,         -- 1 (humid soil) to 3 (dry soil)
+    watering FLOAT,             -- 1 (daily) to 3 (every few weeks)
+    suggested_soil_mix TEXT
 );
