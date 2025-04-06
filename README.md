@@ -9,8 +9,8 @@
 ## 👥 Team Members & Roles
 - **Vincent Yang** – Backend (AWS, Lambda, RDS, SQS, ML Integration)
 - **Lizbeth Yumbia** – Frontend (React UI, API integration)
-- **Betty** – Design Lead (UI/UX assets, branding, Adobe After Effects splash screen)
-- **Leo** – ML Engineer (ML models, data preprocessing, forecasting)
+- **Betty Dong** – Design Lead (UI/UX assets, branding, Adobe After Effects splash screen)
+- **Leo Chang** – ML Engineer (ML models, data preprocessing, forecasting)
 
 ---
 
@@ -107,7 +107,7 @@ A **user-friendly website** that recommends indoor crops based on environmental 
 
 ### 🏃‍♀️ Sprint 2 (6:00 PM - 11:00 PM)
 - 🤖 Leo: Finished forecasting model
-- ☁️ Vi: Linked model to Lambda and SQS, added API endpoints
+- ☁️ Vi: Added API endpoints and set up DB and schema
 - 🖥️ Liz: Integrated frontend with API (GET/POST, dynamic UI)
 - 🎨 Betty: Created splash screen with Adobe AE
 
@@ -118,6 +118,22 @@ A **user-friendly website** that recommends indoor crops based on environmental 
 - ❎ Hooked up weekly scheduler (via Lambda/SQS)
 - ❎ Researched Auth0 integration (stretch goal - did not have time for)
 
+---
+
+## 🚧 Issues We Ran Into
+⚠️ Frontend–Backend Integration:
+- We needed more help linking React to AWS Lambda. A dedicated fullstack engineer would have helped smooth out deployment and CORS issues.
+❌ SQS + Model Automation:
+- We weren’t able to finish connecting the ML forecasting model to a scheduler or SQS. This broke our automation pipeline for weekly plant care tips.
+🌐 CORS and API Gateway:
+- None of us had prior experience configuring CORS or securely exposing Lambda endpoints to the frontend. This cost several hours in debugging.
+🧠 SageMaker + ML Deployment:
+- Deploying a joblib model on Lambda turned out to be memory-intensive and error-prone. We needed more guidance on using SageMaker.
+💻 Frontend Bottleneck:
+- With only one React developer, it was hard to keep up with backend changes. Reallocating a designer to help with frontend could’ve helped.
+📉 Data Limitations:
+- We lacked robust real-world data for training the forecasting model. Our current model is a rough simulation trained on synthetic data.
+  
 ---
 
 ## 🔗 References
