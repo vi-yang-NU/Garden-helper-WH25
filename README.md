@@ -114,9 +114,9 @@ A **user-friendly website** that recommends indoor crops based on environmental 
 ### 🏁 Sprint 3 (8:30 AM - 12:30 PM)
 - ✅ Fixed and deployed `recommend_plants.py` to Lambda
 - ✅ Created `get_recommended_plants` endpoint
-- ✅ Finalized health forecasting model deployment
-- ✅ Hooked up weekly scheduler (via Lambda/SQS)
-- 🔐 Researched Auth0 integration (stretch goal - did not have time for)
+- ❎ Finalized health forecasting model deployment
+- ❎ Hooked up weekly scheduler (via Lambda/SQS)
+- ❎ Researched Auth0 integration (stretch goal - did not have time for)
 
 ---
 
