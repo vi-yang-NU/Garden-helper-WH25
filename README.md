@@ -7,8 +7,8 @@
 ---
 
 ## 👥 Team Members & Roles
-- **Vincent Yang** – Backend Lead (AWS, Lambda, RDS, SQS, ML Integration)
-- **Lizbeth Yumbia** – Frontend Developer (React UI, API integration)
+- **Vincent Yang** – Backend (AWS, Lambda, RDS, SQS, ML Integration)
+- **Lizbeth Yumbia** – Frontend (React UI, API integration)
 - **Betty** – Design Lead (UI/UX assets, branding, Adobe After Effects splash screen)
 - **Leo** – ML Engineer (ML models, data preprocessing, forecasting)
 
