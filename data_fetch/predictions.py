@@ -7,11 +7,15 @@ Original file is located at
     https://colab.research.google.com/drive/1-m9EwhieGHjUFDYI6CLB5ZlXr-FS9vRL
 """
 
+import os
+os._exit(00)
+
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 import requests
+from datetime import datetime
 
 from google.colab import userdata
 userdata.get('weather_api')
@@ -24,29 +28,50 @@ lat, lon = location_data['loc'].split(',')
 
 api_key = userdata.get('weather_api')
 
-url = f"https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude=minutely,hourly,alerts&units=metric&appid={api_key}"
-
+# OpenWeather 5-day / 3-hour forecast
+url = f"https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&units=imperial&appid={api_key}"
 response = requests.get(url)
-weather = response.json()
+forecast_data = response.json()
 
-weather.keys()
+# Extract forecast list
+forecast_list = forecast_data['list']
 
-if 'daily' not in weather:
-    print("API Error:", weather)
-else:
-    for day in weather['daily']:
-        print(day['temp']['day'])
+# Parse data into a DataFrame
+data = []
+for entry in forecast_list:
+    dt = datetime.fromtimestamp(entry['dt'])
+    temp = entry['main']['temp']
+    humidity = entry['main']['humidity']
+    clouds = entry['clouds']['all']  # cloud coverage as proxy for sunlight
+    data.append([dt.date(), temp, humidity, clouds])
+
+df = pd.DataFrame(data, columns=['date', 'temp', 'humidity', 'clouds'])
+
+# Group by day and calculate averages
+daily_avg = df.groupby('date').mean(numeric_only=True).reset_index()
+print("Daily Averages (Next 5 Days):")
+print(daily_avg)
+
+# Optional: get overall 6-day average
+overall_avg = daily_avg.mean(numeric_only=True)
+sunlight_hrs = 30 * 0.01 * overall_avg['clouds']
+
+print("\n5-Day Averages:")
+print(f"Temp: {overall_avg['temp']:.2f}°C")
+print(f"Humidity: {overall_avg['humidity']:.2f}%")
+print(f"Cloudiness (sunlight proxy): {overall_avg['clouds']:.2f}%")
+print(f"Hours of sunlight: {sunlight_hrs:.2f}") # roughly 30 hours of good sunlight in 6 days
 
 # get the average of the below from the api, then add in the user inputted data in watering per week and soil type to compute
 
 input_data = {
-    'avg_temp': 26,
-    'humidity': 45,
-    'sunlight_hrs': 9,
-    'watering_per_week': 2,
+    'avg_temp': overall_avg['temp'],
+    'humidity': overall_avg['humidity'],
+    'sunlight_hrs': sunlight_hrs,
+    'watering_frequency': 2, #this is based on user input
 }
 
-# example case
+# example machine learning dataset
 
 data = {
     'avg_temp': [75, 60, 90, 85, 70, 55, 88, 62, 65, 82],
@@ -76,11 +101,10 @@ print(classification_report(y_test, y_pred))
 
 # Example new plant care input
 new_input = pd.DataFrame([{
-    'avg_temp': 78,
-    'humidity': 35,
-    'sunlight_hrs': 9,
-    'watering_per_week': 2,
-    'soil_type': 1  # loamy (check encoding)
+    'avg_temp': input_data['avg_temp'],
+    'humidity': input_data['humidity'],
+    'sunlight_hrs': input_data['sunlight_hrs'],
+    'watering_frequency': input_data['watering_frequency']
 }])
 
 prediction = model.predict(new_input)
