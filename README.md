@@ -1,5 +1,5 @@
 # 🌱 WildHacks 2025 – Garden Helper
-./toileeto.png
+`./toileeto.png`
 
 ## 🎯 Project Theme & Tracks
 - **Theme:** Choose Your Own Adventure
