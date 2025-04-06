@@ -119,15 +119,17 @@ Self explanatory
 ## Sprint 1  1:00 PM - 6:00 PM ##
 
 - Art and design wise: have all assets and designs ready by 6 PM Betty 
-
 - by 6 PM finish parsing through the dataset, and setting up a basic model (does not need good prediction yet) - Leo 
+- Set up AWS backend - Vi 
+- Set up frontend with react - Liz
 
 
 ## Sprint 2 6:00PM - 11:00 PM ##
 
-- Come up with ML model using the data from Kaggle to predict which plants would grow better. (i.e. the user is going to buy 1 soil, or they can make their own soil combination, but which plants can they have given a nitrogen, phosphorus, potassium). 
-So for a given combination of the three minerals, which plants would work the best, and what is the range of possible plant values we can get from decreasing one/ increasing another. 
-- Additionally do this calcuation on humidity and temperature.  
+- Come up with ML model using the data from Kaggle to predict when your plant will die Leo (completed)
+- Link up Leo's reccomendation model to populate the user's account, and forcasted model to SMS/SQS and look into how the automation will work. "Last potted" add to the API calls. - Vi 
+- Integrate API calls in the front end, includes the get and post, onboarding dynamically changing the UI - Liz 
+- Use Adobe AE to create a logo splash screen - Betty
 
 
 
