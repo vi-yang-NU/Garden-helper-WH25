@@ -1,146 +1,132 @@
-# wildhacks-2025
+# 🌱 WildHacks 2025 – Garden Helper
 
-# Tracks: 
-- Agriculture, productivity/wellness and Finance 
-- Theme: Choose your own Adventure 
+## 🎯 Project Theme & Tracks
+- **Theme:** Choose Your Own Adventure
+- **Tracks:** Agriculture, Productivity/Wellness, and Finance
 
-# Authors: 
-- Vincent Yang 
-- Lizbeth Yumbia
-- Betty 
-- Leo 
+---
 
+## 👥 Team Members & Roles
+- **Vincent Yang** – Backend Lead (AWS, Lambda, RDS, SQS, ML Integration)
+- **Lizbeth Yumbia** – Frontend Developer (React UI, API integration)
+- **Betty** – Design Lead (UI/UX assets, branding, Adobe After Effects splash screen)
+- **Leo** – ML Engineer (ML models, data preprocessing, forecasting)
 
-# Project Background # 
-## Target audience: ## 
-Target Audience: home growers in urban areas
+---
 
-## Problem Statement: ##
-Problem: New home growers seeking to start indoor horticulture in small or limited spaces
+## 🌿 Target Audience
+**Urban home growers** who are starting their indoor gardening journey in limited spaces.
 
-# JTBD: #
-When I’m starting to grow food at home for the first time, I want a simple way to learn which crops are right for my indoor space and how to care for them, so I can grow healthy plants successfully and feel confident in my gardening journey.
+---
 
-## Solution: ##
-Our Solution: A user-friendly website that helps first-time growers learn the conditions needed to successfully grow their favorite crops indoors — and track their garden’s progress over time.
+## ❓ Problem Statement
+First-time home growers struggle to understand which plants are suitable for their space and how to maintain plant health over time.
 
-# User Journey: #
+---
 
-** User "set up" **  
-1. Create Username/Password 
-2. Users fills out questionare (make a codebook)
-    - Which city do you live in 
-    - Do you have access to window/ direct sunlight
-        - What's the orientation of the windows 
-        (find it with compass)
-    - Have you grown plants before? 
-    - What type of plant would you like to grow 
-    - What temperature is your home right now? 
-    - What is the humidity of your home?  
-    - How much they want to water the plant 
-3. Have a seperate page that shows we will help you track your progress
-    - they can opt in or out
-    - We will let you know if your plant needs "supplements" i.e. x hours of artificial sunlight, x more or less watering times, by sending it to your email or text
-        - Ask for if they want to be emailed or texted 
-4. User sees a dashboard with the reccomended plants for them (categorized), they will be shown plants that they want to grow be categorized into easy medium and hard. User clicks on cards, they will then exit set up 
+## ✅ JTBD (Jobs To Be Done)
+> When I’m starting to grow food at home for the first time, I want a simple way to learn which crops are right for my indoor space and how to care for them, so I can grow healthy plants and feel confident in my gardening journey.
 
-5. Home page has the different cards that the user can check what progress they are on with different plants. They can click each one to expand and finish set up for the plant (if they have not)
+---
 
-6. User will be sent an email that tells them what to do that week. 
+## 💡 Solution Overview
+A **user-friendly website** that recommends indoor crops based on environmental conditions and guides users in caring for their plants through:
+- Personalized plant recommendations
+- Weekly care reminders
+- Plant health forecasting
+- Optional email/SMS alerts
 
-# Tech Stack # 
+---
 
-## Backend: ##
-Part 1. Models 
-    - Part A: Prediction of similar plants 
+## 🌼 User Journey
+### 1. Onboarding / Setup
+- User creates an account (username + password)
+- Fills out questionnaire:
+  - Location (city)
+  - Window access & orientation
+  - Gardening experience
+  - Desired plant type
+  - Home temperature & humidity
+  - Watering preference
+  - Opt-in for email or SMS alerts
 
-        what: Prediction of what plants would be good to plant, based on user preferences, and the conditions (temperature and humidity) of the user's home
-        how: ML training on Jypter Notebook 
-        Model input: Plant name, temperature, humidity 
-        Model output: range of plants user can plant for different soil combinations 
+### 2. Dashboard
+- View recommended plants categorized by difficulty (easy/medium/hard)
+- Track progress of each selected plant
 
-        Possible datasets: 
-            - https://www.kaggle.com/datasets/shankarpriya2913/crop-and-soil-dataset/data
+### 3. Weekly Notifications
+- Users receive care tips (repotting, soil, watering, lighting, temp changes)
+- Delivered via email or SMS based on opt-in
 
-      Part B: Forecasting future problems 
-        what: Making predictions of plant health based on temeprature, humidity, amount of watering, amount of sunlight the plant is getting based on geographical location/ weather reports of geographical location. 
+---
 
-        Model inputs: weather conditions for the week, # of times watering, type of soil 
-        Model outputs: Is the plant doing ok (yes or no)
+## 🛠️ Tech Stack
 
-        - Possible datasets: 
-            - https://plantlightdb.com/
-            - https://www.try-db.org/TryWeb/About.php
-            - https://www.kaggle.com/datasets/ziya07/plant-health-data
-            - https://www.kaggle.com/datasets/gorororororo23/plant-growth-data-classification
+### ⚙️ Backend
+#### 🔹 Part 1: ML Models
+- **A. Plant Recommendation Model**  
+  - Input: brightness, temperature, humidity, watering
+  - Output: Top 10 plant matches
+  - Trained in Jupyter using real plant datasets
 
-      Part C: Gemeni prompt generation (stretch goal (?)) 
-        Input: Given the context of a plant (and image of plant), what tools the user has 
-        Output: Generate reccomendations for the plant. 
-        
-        User can upload picture of plant to diagnose the problem. 
+- **B. Plant Health Forecasting Model**
+  - Input: weather + user input (watering, sunlight)
+  - Output: Binary health prediction (ok or not)
+  - Model exported with `joblib` and hosted on Lambda
 
-Part 2. Cloud Architecture 
-- API gateway/ lambdas + RDS and S3 
-    - We save user's email and pass and once verified we can pass token for each call (stretch goal)
-    - User's questionare gets sent to S3 bucket 
-    - User's opt in or out 
-    - which plants the user selects 
+- **C. Gemini Prompt Gen (stretch)**
+  - Input: Image + context
+  - Output: Plant care advice
 
-Part 3. AWS SQS 
-- User will be sent an email every week on instructions on how to take care of plants 
-    - They will be notified on 
-        - when they need to repot 
-        - when they need to change the soil 
-        - how often to irrigate it 
-        - how much more artificial light in this upcoming week 
-        - any changes to temperature? 
+#### 🔹 Part 2: Cloud Architecture (AWS)
+- **Lambda + API Gateway**: Handles requests (login, create user, get/save profile, add plants)
+- **S3**: Stores questionnaire and optional image uploads
+- **RDS**: MySQL database for user profiles and plant data
+- **SQS**: Sends reminders weekly based on user's plant progress
+- **EC2**: Hosts the web app and static frontend
 
-Part 4. AWS EC2 
-    - Router/ web hosting where the server will return the website pages when called 
-    - Pages we will have: 
-        - username/pass
-        - questionare page 
-        - opt in/out 
-        - recc plants 
-        - home page  
+### 🖼️ Frontend
+- **React** with dynamic routing and tab views
+- Integrated onboarding UI & dashboard
+- Axios used for all API requests
 
-Part 5. SQL/ RDS
-- Connecting to the database using MySQLWorkbench
-![ERD Diagram](./ERD_DB_diagram.png)
+---
 
-Part 6. API gateway 
-Self explanatory 
+## 🗂️ Database
+- ERD located at: `./ERD_DB_diagram.png`
 
+---
 
+## 📆 Sprint Breakdown
 
-# SPRINTS # 
+### 🏃‍♂️ Sprint 1 (1:00 PM - 6:00 PM)
+- 🎨 Betty: Completed all assets and design
+- 🤖 Leo: Finished parsing dataset & created base model
+- ☁️ Vi: Setup AWS backend (S3, Lambda, RDS)
+- 🖥️ Liz: Setup React frontend scaffold
 
-## Sprint 1  1:00 PM - 6:00 PM ##
+### 🏃‍♀️ Sprint 2 (6:00 PM - 11:00 PM)
+- 🤖 Leo: Finished forecasting model
+- ☁️ Vi: Linked model to Lambda and SQS, added API endpoints
+- 🖥️ Liz: Integrated frontend with API (GET/POST, dynamic UI)
+- 🎨 Betty: Created splash screen with Adobe AE
 
-- Art and design wise: have all assets and designs ready by 6 PM Betty 
-- by 6 PM finish parsing through the dataset, and setting up a basic model (does not need good prediction yet) - Leo 
-- Set up AWS backend - Vi 
-- Set up frontend with react - Liz
+### 🏁 Sprint 3 (8:30 AM - 12:30 PM)
+- ✅ Fixed and deployed `recommend_plants.py` to Lambda
+- ✅ Created `get_recommended_plants` endpoint
+- ✅ Finalized health forecasting model deployment
+- ✅ Hooked up weekly scheduler (via Lambda/SQS)
+- 🔐 Researched Auth0 integration (stretch goal)
 
+---
 
-## Sprint 2 6:00PM - 11:00 PM ##
+## 🔗 References
+- [WildHacks Guide](https://guide.wildhacks.net)
+- [Plant Dataset - Kaggle](https://www.kaggle.com/datasets)
+- [TRY DB](https://www.try-db.org/TryWeb/About.php)
+- [PlantLightDB](https://plantlightdb.com/)
 
-- Come up with ML model using the data from Kaggle to predict when your plant will die Leo (completed)
-- Link up Leo's reccomendation model to populate the user's account, and forcasted model to SMS/SQS and look into how the automation will work. "Last potted" add to the API calls. - Vi 
-- Integrate API calls in the front end, includes the get and post, onboarding dynamically changing the UI - Liz 
-- Use Adobe AE to create a logo splash screen - Betty
+---
 
-## Sprint 3 Last Sprint! 8:30AM - 12:30 PM ##
-
-- Fix reccomend_plants.py and upload as a lambda function as post reccomended_plants (DONE)
-- Make get_reccomended_plants (DONE) 
-- Fix up the forcasted model and upload forcast_model as a lambda function 
-- Figure out how to invoke lambda function on schedule 
-- (if have time) figure out how to incorporate auth0 
-    - Vi
-
-Submission at 12:30 PM 
-
-## #Logistics and notes: ##
-guide.wildhacks.net 
+## 🚀 Submission Deadline
+**⏰ Sunday, 12:30 PM (Final Submission)**
