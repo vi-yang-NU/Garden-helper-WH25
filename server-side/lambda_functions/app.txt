@@ -1,0 +1,53 @@
+// Guide to help you call our server-side API using AWS Lambda
+import requests
+
+BASE_URL = "https://viyangprojects.s3.us-east-2.amazonaws.com/"
+
+# 1. Add User Plant
+payload = {
+    "user_id": 1,
+    "plant_id": 42,
+    "progress_stage": "seedling",
+    "setup_complete": True
+}
+response = requests.post(f"{BASE_URL}/user-plants", json=payload)
+print("Add User Plant:", response.json())
+
+# 2. Create User
+payload = {
+    "username": "viyang",
+    "password": "secure123",
+    "email": "vi@example.com",
+    "phone": "1234567890"
+}
+response = requests.post(f"{BASE_URL}/users", json=payload)
+print("Create User:", response.json())
+
+# 3. Get User's Plants
+params = {"user_id": 1}
+response = requests.get(f"{BASE_URL}/user-plants", params=params)
+print("Get User Plants:", response.json())
+
+# 4. Login User
+payload = {
+    "username": "viyang",
+    "password": "secure123"
+}
+response = requests.post(f"{BASE_URL}/login", json=payload)
+print("Login User:", response.json())
+
+# 5. Save User Profile
+payload = {
+    "user_id": 1,
+    "city": "Chicago",
+    "has_window": True,
+    "window_orientation": "east",
+    "experience_level": "beginner",
+    "desired_plant_type": "low maintenance",
+    "home_temperature": 70,
+    "home_humidity": 45,
+    "watering_preference": "twice a week",
+    "track_opt_in": True
+}
+response = requests.post(f"{BASE_URL}/user-profile", json=payload)
+print("Save User Profile:", response.json())
