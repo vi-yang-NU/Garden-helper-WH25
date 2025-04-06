@@ -6,7 +6,7 @@ const CropCard = ({ plant }) => {
     <div className="crop-card">
       <div className="crop-image-wrapper">
         <img
-          src={plant.image || '/placeholder-plant.png'}
+          src={plant.image || '../assets/plant_images/Abutilon_hybridum.png'}
           alt={plant.name}
           className="crop-image"
         />

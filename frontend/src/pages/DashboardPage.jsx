@@ -3,30 +3,48 @@ import { Link } from 'react-router-dom';
 import CropCard from '../components/CropCard';
 import '../styling/Dashboard.css';
 import logo from '../assets/catnip_logo.png';
+import { getUserPlants } from '../services/api.js';
+import abutilonImage from '../assets/plant_images/Abutilon_hybridum.png';
 
 const DashboardPage = () => {
   const [plants, setPlants] = useState([]);
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    // Replace with actual API calls
-    setPlants([
-      { id: 1, name: 'Ben', image: '', status: 'Needs watering' },
-      { id: 2, name: 'Venussy', image: '', status: 'Add fertilizer' },
-      { id: 3, name: 'Succulent Boi', image: '', status: 'Thriving!' },
-    ]);
-
-    setTasks([
-      'Water Ben',
-      'Add fertilizer to Venussy',
-      'Repot Succulent Boi'
-    ]);
+    const fetchPlants = async () => {
+      try {
+        const userId = 1;
+        // const userId = localStorage.getItem('user_id'); // or however you're storing it
+  
+        const userPlants = await getUserPlants(userId);
+  
+        // Transform data if needed
+        const formattedPlants = userPlants.map((plant) => ({
+          id: plant.plant_id,
+          name: plant.plant_name || 'Unnamed Plant',
+          image: abutilonImage, // use plant.image_url if available
+          status: plant.progress_stage || 'No status',
+        }));
+  
+        setPlants(formattedPlants);
+  
+        // Set mock tasks for now — replace with backend logic later
+        setTasks([
+          `Water ${formattedPlants[0]?.name}`,
+          `Add fertilizer to ${formattedPlants[1]?.name || 'plant'}`,
+        ]);
+      } catch (err) {
+        console.error('Failed to load user plants:', err);
+      }
+    };
+  
+    fetchPlants();
   }, []);
 
   return (
     <div className="dashboard-container">
       <aside className="dashboard-sidebar">
-        <img src={logo} alt="Urban Grower Logo" className="sidebar-logo" />
+        <img src={logo} alt="CatNip Logo" className="sidebar-logo" />
         <h2 className="sidebar-title">Upcoming Plant Care</h2>
         <ul className="task-list">
           {tasks.map((task, idx) => (
