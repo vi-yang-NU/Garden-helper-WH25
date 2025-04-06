@@ -6,24 +6,39 @@ import openpyxl
 
 # Load dataset
 df = pd.read_excel("data_fetch/data_core.xlsx", engine='openpyxl')
+df.columns = df.columns.str.strip()  # Remove leading/trailing spaces
+print("Loaded data:", df.shape)
+print("Columns in dataset:", df.columns.tolist())
 
-# Columns to keep
+# Define the actual expected column names based on observed file
 columns_used = ['brightness', 'temperature', 'solHumidity', 'watering']
-df = df[['name', 'commonName'] + columns_used + ["suggestedSoilMix"]]
+required_columns = ['name', 'commonName', 'suggestedSoilMix'] + columns_used
+
+# Filter columns that exist
+available_columns = [col for col in required_columns if col in df.columns]
+df = df[available_columns]
+print("After column selection:", df.shape)
+
 df.dropna(inplace=True)
+print("After initial dropna:", df.shape)
+
 df.replace("undefined", np.nan, inplace=True)
 df.dropna(inplace=True)
+print("After replacing 'undefined' and second dropna:", df.shape)
 
-# Remove corrupted brightness rows
+# Remove corrupted brightness rows if present
 df['brightness'] = df['brightness'].astype(str)
 df = df[~df['brightness'].str.startswith('202')]
+print("After filtering brightness starting with '202':", df.shape)
 
-# Remove rows with letters in numeric columns
-columns_to_check = df.columns.difference(['commonName'])
+# Remove rows with letters in numeric columns (restricted to numeric columns only)
+numeric_columns = [col for col in columns_used if col in df.columns]
 def contains_letters(val):
     return bool(re.search(r'[a-zA-Z]', str(val)))
-mask = df[columns_to_check].applymap(contains_letters).any(axis=1)
+mask = df[numeric_columns].applymap(contains_letters).any(axis=1)
+print("Rows with letters in numeric fields:", df[mask].shape)
 df = df[~mask]
+print("After removing rows with letters in numeric fields:", df.shape)
 
 # Convert ranges like "2_3" or "2,3" into averages
 def convert_ranges(val):
@@ -37,10 +52,11 @@ def convert_ranges(val):
     return val
 
 df = df.applymap(convert_ranges)
+print("After converting ranges:", df.shape)
 
-# Convert columns to float
-columns_to_convert = df.columns.difference(['commonName'])
-df[columns_to_convert] = df[columns_to_convert].astype(float)
+# Convert only numeric columns to float
+df[numeric_columns] = df[numeric_columns].astype(float)
+print("After converting columns to float:", df.shape)
 
 # Save cleaned data
 df.to_csv("cleaned_plants.csv", index=False)
