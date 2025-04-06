@@ -131,7 +131,16 @@ Self explanatory
 - Integrate API calls in the front end, includes the get and post, onboarding dynamically changing the UI - Liz 
 - Use Adobe AE to create a logo splash screen - Betty
 
+## Sprint 3 Last Sprint! 8:30AM - 12:30 PM ##
 
+- Fix reccomend_plants.py and upload as a lambda function as post reccomended_plants
+- Make get_reccomended_plants 
+- Fix up the forcasted model and upload forcast_model as a lambda function 
+- Figure out how to invoke lambda function on schedule 
+- (if have time) figure out how to incorporate auth0 
+    - Vi
+
+Submission at 12:30 PM 
 
 ## #Logistics and notes: ##
 guide.wildhacks.net 

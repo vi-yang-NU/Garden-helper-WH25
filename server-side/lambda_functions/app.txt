@@ -1,7 +1,7 @@
 // Guide to help you call our server-side API using AWS Lambda
 import requests
 
-BASE_URL = "https://viyangprojects.s3.us-east-2.amazonaws.com/"
+BASE_URL = "https://vql82dptpk.execute-api.us-east-2.amazonaws.com/prod"
 
 # 1. Add User Plant
 payload = {
