@@ -1,5 +1,4 @@
 # 🌱 WildHacks 2025 – Garden Helper
-<img src="toileeto.png" alt="Toileeto" width="300">
 
 ## 🎯 Project Theme & Tracks
 - **Theme:** Choose Your Own Adventure
@@ -19,6 +18,7 @@
 **Urban home growers** who are starting their indoor gardening journey in limited spaces.
 
 ---
+<img src="toileeto.png" alt="Toileeto" width="100">
 
 ## ❓ Problem Statement
 First-time home growers struggle to understand which plants are suitable for their space and how to maintain plant health over time.
